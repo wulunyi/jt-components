@@ -72,8 +72,15 @@
       <view class="title" slot="title">测试列表</view>
       <list></list>
     </panel>
-
+    <view>
+      <text @tap="open">开</text>
+      <text @tap="close">关</text>
+    </view>
+    <view>
+      <text @tap="navigate">test</text>
+    </view>
     <toast />
+    <Mask />
   </view>
 </template>
 
@@ -85,21 +92,25 @@
   import Group from '../components/group'
   import Toast from 'wepy-com-toast'
   import testMixin from '../mixins/test'
+  import Mask from 'jt-wepy-mask';
+  import navigateMixin from 'jt-mixin-navigate';
 
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: 'test'
     }
+
     components = {
       panel: Panel,
       counter1: Counter,
       counter2: Counter,
       list: List,
       group: Group,
-      toast: Toast
+      toast: Toast,
+      Mask: Mask
     }
 
-    mixins = [testMixin]
+    mixins = [testMixin, navigateMixin]
 
     data = {
       mynum: 20,
@@ -163,6 +174,15 @@
     }
 
     methods = {
+      open() {
+        this.$invoke('Mask', 'show');
+      },
+      close() {
+        this.$invoke('Mask', 'hide');
+      },
+      navigate() {
+        this.navigateTo('/pages/test');
+      },
       plus () {
         this.mynum++
       },

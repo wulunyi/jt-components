@@ -1,0 +1,17 @@
+<style lang="less">
+</style>
+<template lang="wxml">
+  <view>
+    <text> test </text>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  
+  export default class Test extends wepy.page {
+    config = {
+      navigationBarTitleText: 'test'
+    }
+  }
+</script>
