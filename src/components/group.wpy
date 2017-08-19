@@ -18,8 +18,14 @@
 
   export default class Group extends wepy.component {
     props = {
-      grouplist: {},
-      index: {}
+      grouplist: {
+        type: Object,
+        default: {}
+      },
+      index: {
+        type: Number,
+        default: 0
+      }
     }
 
     components = {
@@ -28,7 +34,8 @@
     methods = {
       tap () {
         this.grouplist.name = `Parent Random(${Math.random()})`
-        console.log(`Clicked Group ${this.$index}, ID is ${this.grouplist.id}`)
+
+        console.log(`Clicked Group ${JSON.stringify(this.index)} ${this.$index}, ID is ${this.grouplist.id}`)
       }
     }
   }
