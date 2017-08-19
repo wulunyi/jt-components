@@ -1,0 +1,72 @@
+<style lang="scss">
+  ._icon-category-wrap {
+    width: 100%;
+    padding: 20rpx 0;
+    box-sizing: border-box;
+  }
+
+  ._icon-category-list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  ._icon-category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 122rpx;
+
+    image {
+      height: 84rpx;
+      width: 84rpx;
+      border-radius: 50%;
+      background-color: #F4F4F4;
+    }
+
+    text {
+      color: #95989A;
+      line-height: 28rpx;
+      font-size: 20rpx;
+    }
+  }
+</style>
+
+<template lang="pug">
+  view._icon-category-wrap(class="{{className}}", wx:if="{{!!iconCategoryList.length}}")
+    view._icon-category-list
+      repeat(
+        for="{{iconCategoryList}}", 
+        index="index", 
+        item="item", 
+        key="index"
+      )
+        view._icon-category-item(wx:if="{{index<5}}", @tap="tap({{item}})")
+          image(mode="aspectFill", src="{{item.icon}}")
+          text {{item.name}}
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class IconCategory extends wepy.component {
+    props = {
+      iconCategoryList: {
+        type: Array,
+        default: []
+      }, // 分类对象列表 {icon: '', name: ''}
+      className: {
+        type: String,
+        default: ''
+      } // 可修改样式
+    }
+
+    methods = {
+      tap(item) {
+        this.$emit('tap', item);
+      } // 支持点击事件
+    }
+  }
+</script>

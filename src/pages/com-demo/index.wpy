@@ -1,0 +1,59 @@
+<style lang="scss">
+  .icon-category-wrap {
+    padding: 20rpx 40rpx;
+    background: #F4F4F4;
+  }
+</style>
+<template lang="pug">
+  IconCategory(
+    className="icon-category-wrap",
+    :iconCategoryList.sync="iconCategoryList",
+    @tap.user="tap"
+  )
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import IconCategory from '../../components/icon-category/icon-category';
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: 'com-demo'
+    }
+
+    data = {
+      iconCategoryList: [
+        {
+          icon: '/components/icon-category/test-icon/test.png',
+          name: '领取卡券'
+        },
+        {
+          icon: '/components/icon-category/test-icon/test.png',
+          name: '领取卡券'
+        },
+        {
+          icon: '/components/icon-category/test-icon/test.png',
+          name: '领取卡券'
+        },
+        {
+          icon: '/components/icon-category/test-icon/test.png',
+          name: '领取卡券'
+        },
+        {
+          icon: '/components/icon-category/test-icon/test.png',
+          name: '领取卡券'
+        }
+      ]
+    }
+
+    components = {
+      IconCategory
+    }
+
+    methods = {
+      tap( item ) {
+        console.log( item);
+      }
+    }
+  }
+</script>

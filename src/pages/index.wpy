@@ -15,7 +15,7 @@
     color: #aaa;
   }
 </style>
-<template>
+<template lang="wxml">
   <view class="container">
     <view class="userinfo" @tap="handleViewTap">
       <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
@@ -82,6 +82,8 @@
     <toast />
     <Mask />
   </view>
+  
+  <IconCategory />
 </template>
 
 <script>
@@ -94,6 +96,7 @@
   import testMixin from '../mixins/test'
   import Mask from 'jt-wepy-mask';
   import navigateMixin from 'jt-mixin-navigate';
+  import IconCategory from '../components/icon-category/icon-category';
 
   export default class Index extends wepy.page {
     config = {
@@ -107,7 +110,8 @@
       list: List,
       group: Group,
       toast: Toast,
-      Mask: Mask
+      Mask: Mask,
+      IconCategory
     }
 
     mixins = [testMixin, navigateMixin]
